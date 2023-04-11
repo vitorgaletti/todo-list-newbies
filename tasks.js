@@ -19,12 +19,26 @@ const taskList = document.getElementById("tasks_list");
 
 // TODO
 // add new task
+function addTask(event) {
+  console.log(event);
+  event.preventDefault();
+  console.log("Add Task");
+}
 
 // complete task
+function completeTask(event) {
+  console.log("Complete task");
+}
 
 // incomplete task
+function incompleteTask(event) {
+  console.log("Incomplete task");
+}
 
 // delete task
+function deleteTask(event) {
+  console.log("Delete Task");
+}
 
 // sync HTML with taskData list
 
