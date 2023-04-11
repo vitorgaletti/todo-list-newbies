@@ -44,7 +44,7 @@
             id="task_input"
             placeholder="Adicione uma nova tarefa"
           />
-          <button type="submit" disabled>
+          <button type="submit" disabled onclick="{console.log('Add Task')}">
             Criar
             <i class="ph-bold ph-plus-circle"></i>
           </button>
@@ -72,17 +72,35 @@
         <ul id="tasks_list" class="tasks_list">
           <li class="task todo">
             <div>
-              <i class="ph-duotone ph-circle-dashed check_btn"></i>
+              <i
+                class="ph-duotone ph-circle-dashed check_btn"
+                onclick="{console.log('Task marcada como concluída');}"
+              ></i>
               <p>Dar banho nos gatos</p>
             </div>
-            <i class="ph-duotone ph-trash delete_btn"></i>
+            <i
+              class="ph-duotone ph-trash delete_btn"
+              onclick="{
+              console.log('Task excluída');
+            }"
+            ></i>
           </li>
           <li class="task done">
             <div>
-              <i class="ph-duotone ph-check-circle check_btn"></i>
+              <i
+                class="ph-duotone ph-check-circle check_btn"
+                onclick="{
+                console.log('Task marcada como pendente');
+              }"
+              ></i>
               <p class="risked">Dar banho nos gatos</p>
             </div>
-            <i class="ph-duotone ph-trash delete_btn"></i>
+            <i
+              class="ph-duotone ph-trash delete_btn"
+              onclick="{
+              console.log('Task excluída');
+            }"
+            ></i>
           </li>
         </ul>
       </main>

@@ -18,7 +18,6 @@ const addTaskButton = document.getElementsByTagName("button")[0];
 const taskList = document.getElementById("tasks_list");
 
 // TODO
-
 // add new task
 
 // complete task
