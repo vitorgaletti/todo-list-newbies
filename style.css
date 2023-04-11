@@ -10,7 +10,9 @@
   --blue-500: #4e6ede;
   --blue-600: #3352c3;
   --green-500: #26c277;
+  --green-700: #093d24;
   --yellow-500: #ffd231;
+  --yellow-700: #644f04;
 }
 
 :focus {
@@ -127,6 +129,8 @@ header {
   margin-left: 8px;
 }
 
+/* ------------------------------ TASKS COUNTER ---------------------- */
+
 .tasks_counter {
   max-width: 46rem;
   padding: 1.25rem;
@@ -137,4 +141,39 @@ header {
 
   display: flex;
   justify-content: space-between;
+}
+
+.tasks_counter strong {
+  font-size: 0.875rem;
+}
+
+.tasks_counter span {
+  padding: 6px 12px;
+  border-radius: 999px;
+  margin-left: 8px;
+}
+
+.count {
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+/* ------------------------------ TASKS COUNTER  ---------------------- */
+
+.all_tasks {
+  color: var(--yellow-500);
+}
+
+.all_tasks span {
+  background-color: var(--yellow-500);
+  color: var(--yellow-700);
+}
+
+.done_tasks {
+  color: var(--green-500);
+}
+
+.done_tasks span {
+  background-color: var(--green-500);
+  color: var(--green-700);
 }
