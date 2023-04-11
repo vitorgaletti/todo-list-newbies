@@ -39,7 +39,11 @@
 
       <main>
         <form class="new_task_form">
-          <input type="text" placeholder="Adicione uma nova tarefa" />
+          <input
+            type="text"
+            id="task_input"
+            placeholder="Adicione uma nova tarefa"
+          />
           <button type="submit" disabled>
             Criar
             <i class="ph-bold ph-plus-circle"></i>
@@ -65,7 +69,7 @@
           </div>
         </section>
 
-        <ul class="tasks_list">
+        <ul id="tasks_list" class="tasks_list">
           <li class="task todo">
             <div>
               <i class="ph-duotone ph-circle-dashed check_btn"></i>
