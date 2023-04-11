@@ -1,17 +1,19 @@
+function uid() {
+  return Date.now().toString(16) + Math.random().toString(16).substring(2);
+}
+
 let taskData = [
   {
-    id: 1,
+    id: uid(),
     name: "Ver se eu tô na esquina.",
     todo: true,
   },
   {
-    id: 2,
+    id: uid(),
     name: "Dar banho nos gatos.",
     todo: false,
   },
 ];
-
-let array = [1, 2, 3];
 
 const addTaskInput = document.getElementById("task_input");
 const addTaskButton = document.getElementsByTagName("button")[0];
