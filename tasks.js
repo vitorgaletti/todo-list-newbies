@@ -82,6 +82,8 @@ function addTask(event) {
   taskData.push(newTask);
   const taskElement = createNewTaskEl(newTask.name, newTask.id);
   taskList.appendChild(taskElement);
+
+  addTaskInput.value = "";
 }
 
 // complete task
@@ -105,11 +107,8 @@ function completeTask(event) {
   });
 }
 
-// TODO
 // incomplete task
 function incompleteTask(event) {
-  console.log("Incomplete task");
-
   const doneIcon = event.target;
   doneIcon.classList.add("hidden");
 
@@ -129,13 +128,19 @@ function incompleteTask(event) {
   });
 }
 
-// TODO
 // delete task
 function deleteTask(event) {
-  console.log("Delete Task");
+  const taskToDeleteId = event.target.parentNode.id;
+  const taskToDelete = document.getElementById(taskToDeleteId);
+
+  const taskWithoutDeletedOne = taskData.filter(
+    (task) => task.id !== taskToDeleteId
+  );
+
+  taskData = taskWithoutDeletedOne;
+  taskList.removeChild(taskToDelete);
 }
 
-// TODO
 // sync HTML with taskData list
 for (const task of taskData) {
   const taskItem = createNewTaskEl(task.name, task.id);
