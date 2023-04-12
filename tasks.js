@@ -6,12 +6,12 @@ let taskData = [
   {
     id: uid(),
     name: "Ver se eu tô na esquina.",
-    todo: true,
+    toDo: true,
   },
   {
     id: uid(),
     name: "Dar banho nos gatos.",
-    todo: true,
+    toDo: true,
   },
 ];
 
@@ -84,11 +84,8 @@ function addTask(event) {
   taskList.appendChild(taskElement);
 }
 
-// TODO
 // complete task
 function completeTask(event) {
-  console.log("Complete task");
-
   const todoIcon = event.target;
   todoIcon.classList.add("hidden");
 
@@ -101,20 +98,35 @@ function completeTask(event) {
   const doneIcon = todoIcon.parentNode.childNodes[1];
   doneIcon.classList.remove("hidden");
 
-  const task = taskData.find((item) => {
+  taskData.find((item) => {
     if (item.id === taskToCompleteId) {
       item.toDo = false;
     }
-    return item.id === taskToCompleteId;
   });
-
-  console.log(taskData);
 }
 
 // TODO
 // incomplete task
 function incompleteTask(event) {
   console.log("Incomplete task");
+
+  const doneIcon = event.target;
+  doneIcon.classList.add("hidden");
+
+  const taskToIncompleteId = doneIcon.parentNode.parentNode.id;
+  const taskToIncomplete = document.getElementById(taskToIncompleteId);
+
+  taskToIncomplete.classList.add("todo");
+  taskToIncomplete.classList.remove("done");
+
+  const todoIcon = doneIcon.parentNode.childNodes[0];
+  todoIcon.classList.remove("hidden");
+
+  taskData.find((item) => {
+    if (item.id === taskToIncompleteId) {
+      item.toDo = true;
+    }
+  });
 }
 
 // TODO
