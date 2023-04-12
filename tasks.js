@@ -29,7 +29,16 @@ function createNewTaskEl(taskName, taskId) {
   task.setAttribute("id", taskId);
 
   //create .left_content div
+  let leftContent = document.createElement("div");
+  leftContent.classList.add("left_content");
+
   // todo icon
+  let todoIcon = document.createElement("i");
+  todoIcon.classList.add("ph-duotone");
+  todoIcon.classList.add("ph-circle-dashed");
+  todoIcon.classList.add("check_btn");
+  todoIcon.addEventListener("click", completeTask());
+
   // done icon
   //task name / p
   //delete icon
