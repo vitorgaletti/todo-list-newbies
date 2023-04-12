@@ -11,7 +11,7 @@ let taskData = [
   {
     id: uid(),
     name: "Dar banho nos gatos.",
-    todo: false,
+    todo: true,
   },
 ];
 
@@ -88,6 +88,27 @@ function addTask(event) {
 // complete task
 function completeTask(event) {
   console.log("Complete task");
+
+  const todoIcon = event.target;
+  todoIcon.classList.add("hidden");
+
+  const taskToCompleteId = todoIcon.parentNode.parentNode.id;
+  const taskToComplete = document.getElementById(taskToCompleteId);
+
+  taskToComplete.classList.add("done");
+  taskToComplete.classList.remove("todo");
+
+  const doneIcon = todoIcon.parentNode.childNodes[1];
+  doneIcon.classList.remove("hidden");
+
+  const task = taskData.find((item) => {
+    if (item.id === taskToCompleteId) {
+      item.toDo = false;
+    }
+    return item.id === taskToCompleteId;
+  });
+
+  console.log(taskData);
 }
 
 // TODO
