@@ -44,6 +44,7 @@ function createNewTaskEl(taskName, taskId) {
   doneIcon.classList.add("ph-duotone");
   doneIcon.classList.add("ph-check-circle");
   doneIcon.classList.add("check_btn");
+  doneIcon.classList.add("hidden");
   doneIcon.addEventListener("click", incompleteTask);
 
   //task name / p
@@ -56,6 +57,15 @@ function createNewTaskEl(taskName, taskId) {
   deleteIcon.classList.add("ph-trash");
   deleteIcon.classList.add("delete_btn");
   deleteIcon.addEventListener("click", deleteTask);
+
+  leftContent.appendChild(todoIcon);
+  leftContent.appendChild(doneIcon);
+  leftContent.appendChild(name);
+
+  task.appendChild(leftContent);
+  task.appendChild(deleteIcon);
+
+  return task;
 }
 
 // TODO
@@ -73,6 +83,9 @@ function addTask(event) {
   };
 
   taskData.push(newTask);
+  const taskElement = createNewTaskEl(newTask.name, newTask.id);
+  console.log(taskElement);
+  taskList.appendChild(taskElement);
 }
 
 // TODO
