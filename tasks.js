@@ -19,6 +19,17 @@ const addTaskInput = document.getElementById("task_input");
 const addTaskButton = document.getElementsByTagName("button")[0];
 const taskList = document.getElementById("tasks_list");
 
+//TODO
+//create new task element
+function createNewTaskEl(taskName, taskId) {
+  //create task li
+  //create .left_content div
+  // todo icon
+  // done icon
+  //task name / p
+  //delete icon
+}
+
 // TODO
 // add new task
 function addTask(event) {
@@ -36,21 +47,26 @@ function addTask(event) {
   taskData.push(newTask);
 }
 
+// TODO
 // complete task
 function completeTask(event) {
   console.log("Complete task");
 }
 
+// TODO
 // incomplete task
 function incompleteTask(event) {
   console.log("Incomplete task");
 }
 
+// TODO
 // delete task
 function deleteTask(event) {
   console.log("Delete Task");
 }
 
+// TODO
 // sync HTML with taskData list
 
+// TODO
 // counter tasks
