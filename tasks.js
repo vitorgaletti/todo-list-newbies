@@ -19,7 +19,6 @@ const addTaskInput = document.getElementById("task_input");
 const addTaskButton = document.getElementsByTagName("button")[0];
 const taskList = document.getElementById("tasks_list");
 
-//TODO
 //create new task element
 function createNewTaskEl(taskName, taskId) {
   //create task li
@@ -68,11 +67,9 @@ function createNewTaskEl(taskName, taskId) {
   return task;
 }
 
-// TODO
 // add new task
 function addTask(event) {
   event.preventDefault();
-  console.log("Add Task");
 
   const newTaskName = addTaskInput.value;
 
@@ -84,7 +81,6 @@ function addTask(event) {
 
   taskData.push(newTask);
   const taskElement = createNewTaskEl(newTask.name, newTask.id);
-  console.log(taskElement);
   taskList.appendChild(taskElement);
 }
 
@@ -108,6 +104,10 @@ function deleteTask(event) {
 
 // TODO
 // sync HTML with taskData list
+for (const task of taskData) {
+  const taskItem = createNewTaskEl(task.name, task.id);
+  taskList.appendChild(taskItem);
+}
 
 // TODO
 // counter tasks
