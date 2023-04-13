@@ -18,6 +18,27 @@ let taskData = [
 const addTaskInput = document.getElementById("task_input");
 const addTaskButton = document.getElementsByTagName("button")[0];
 const taskList = document.getElementById("tasks_list");
+const todoCounterText = document.getElementById("todo_count");
+const doneCounterText = document.getElementById("done_count");
+
+// counter
+function counter() {
+  let toDoCounter = 0;
+  let doneCounter = 0;
+
+  toDoCounter = taskData.length;
+  todoCounterText.innerText = `${toDoCounter}`;
+
+  for (const task of taskData) {
+    if (task.toDo === false) {
+      doneCounter++;
+    }
+  }
+
+  doneCounterText.innerText = `${doneCounter}`;
+}
+
+counter();
 
 //create new task element
 function createNewTaskEl(taskName, taskId) {
@@ -84,6 +105,7 @@ function addTask(event) {
   taskList.appendChild(taskElement);
 
   addTaskInput.value = "";
+  counter();
 }
 
 // complete task
@@ -108,6 +130,8 @@ function completeTask(event) {
       item.toDo = false;
     }
   });
+
+  counter();
 }
 
 // incomplete task
@@ -132,6 +156,8 @@ function incompleteTask(event) {
       item.toDo = true;
     }
   });
+
+  counter();
 }
 
 // delete task
@@ -145,6 +171,8 @@ function deleteTask(event) {
 
   taskData = taskWithoutDeletedOne;
   taskList.removeChild(taskToDelete);
+
+  counter();
 }
 
 // sync HTML with taskData list
