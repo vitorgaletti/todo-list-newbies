@@ -2,18 +2,8 @@ function uid() {
   return Date.now().toString(16) + Math.random().toString(16).substring(2);
 }
 
-let taskData = [
-  {
-    id: uid(),
-    name: "Ver se eu tô na esquina.",
-    toDo: true,
-  },
-  {
-    id: uid(),
-    name: "Dar banho nos gatos.",
-    toDo: true,
-  },
-];
+let taskData = [];
+taskData = loadData() || [];
 
 const addTaskInput = document.getElementById("task_input");
 const addTaskButton = document.getElementsByTagName("button")[0];
@@ -50,6 +40,7 @@ function counter() {
 
 verifyIfListIsEmpty();
 counter();
+loadData();
 
 // create new task element
 function createNewTaskEl(taskName, taskId) {
@@ -111,17 +102,26 @@ function addTask(event) {
     toDo: true,
   };
 
+  if (newTask.name === "") {
+    alert("Campo Obrigatório!!! Por favor, digite uma tarefa.");
+    addTaskInput.focus();
+    return;
+  }
+
   taskData.push(newTask);
+  saveData();
+
   const taskElement = createNewTaskEl(newTask.name, newTask.id);
   taskList.appendChild(taskElement);
 
   addTaskInput.value = "";
+  addTaskInput.focus();
   counter();
 
   verifyIfListIsEmpty();
 }
 
-// complete task
+// complete taskcompleteTask
 function completeTask(event) {
   const todoIcon = event.target;
   todoIcon.classList.add("hidden");
@@ -145,6 +145,7 @@ function completeTask(event) {
   });
 
   counter();
+  saveData();
 }
 
 // incomplete task
@@ -171,6 +172,7 @@ function incompleteTask(event) {
   });
 
   counter();
+  saveData();
 }
 
 // delete task
@@ -187,10 +189,41 @@ function deleteTask(event) {
 
   counter();
   verifyIfListIsEmpty();
+
+  saveData();
+}
+
+// save tasks
+function saveData() {
+  localStorage.setItem("todos", JSON.stringify(taskData));
+}
+
+// load tasks
+function loadData() {
+  return JSON.parse(localStorage.getItem("todos"));
+}
+
+// save complete task
+function saveCompleteTask(task) {
+  task.classList.remove("todo");
+  task.classList.add("done");
+  const todoIcon = task.childNodes[0].childNodes[0];
+  const doneIcon = task.childNodes[0].childNodes[1];
+
+  todoIcon.classList.add("hidden");
+  doneIcon.classList.remove("hidden");
+  const text = task.childNodes[0].childNodes[2];
+  text.classList.add("risked");
 }
 
 // sync HTML with taskData list
 for (const task of taskData) {
   const taskItem = createNewTaskEl(task.name, task.id);
+
   taskList.appendChild(taskItem);
+
+  if (task.toDo === false) {
+    const completeTask = document.getElementById(task.id);
+    saveCompleteTask(completeTask);
+  }
 }
